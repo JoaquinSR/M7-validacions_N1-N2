@@ -1,0 +1,115 @@
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(88, 88, 245);
+       
+  }
+  body {
+    margin: auto;
+    font-family: 'Lato', sans-serif; 
+  }
+  a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  ul {
+    list-style: none;
+  }
+
+/*Estilos encabezamiento: navbar/logo/login*/
+.navbar {
+  background-color: rgb(255, 255, 255);
+  min-height: 100px;
+}
+.nav-link {
+  color: rgb(66, 66, 240);
+  font-size: 1.5rem;
+}
+.nav-link:hover {
+  color: rgb(200, 203, 240);
+}
+.logo-brand {
+  min-width: 100px;
+  max-width: 120px;
+}
+.navbar-toggler {
+  font-size: 1rem;
+}
+.navbar-toggler:focus{
+  outline:none;
+}
+ion-icon {
+  color: rgb(95, 95, 246);
+}
+
+/* Estilos sección principal */
+.cover {
+  text-align: center;
+}
+
+/* Estilos sección hot */
+.hot {
+background-image: url(../img/fondo.png);
+background-repeat: repeat;
+background-size: 50%;
+font-size: 0.7rem;
+}
+.hotArt{
+text-align: center;
+font-size: 1.2rem;
+color: black;
+}
+.hotArt img{
+  max-width:69%;
+  max-height:69%;
+}
+.seeButton{
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: black;
+  background-color: rgb(210, 231, 250);
+  border-radius: 10px;
+  border: 2px solid blue;
+  margin-bottom: 2px;
+}
+
+/* Estilos sección last trades */
+.last-trades {
+text-align: center;
+}
+.trade{
+  text-align: center;
+  font-size: 0.5rem;
+  width: 100%;
+}
+.tradeText{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+  text-decoration: none;
+}
+.parent-grid {
+  width: 100%;
+  background-color: white;
+  justify-content: space-between;
+}
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: 100px 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px;
+  padding: 5px;
+  border: 3px inset blue;
+}
+.grid-item {
+  border: 1px solid blue;
+  padding: 0px;
+  text-align: center;
+}
+.grid-item img{
+  max-width:100%;
+  max-height:100%;
+}
