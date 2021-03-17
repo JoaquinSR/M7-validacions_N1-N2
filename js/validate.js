@@ -142,3 +142,4 @@ function eventL(formT) {
 		if (event.target.value != '') event.target.classList.remove('is-invalid');
 	}, true);
 }
+
