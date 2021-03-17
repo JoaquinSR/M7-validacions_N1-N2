@@ -1,6 +1,8 @@
 const loginForm = document.getElementById("loginFormId");
 const registerForm = document.getElementById("registerFormId");
 const searchForm = document.getElementById("searchFormId");
+const userL = 5;
+const searchL = 3;
 
 function loginValidate() {
 	var acumErrores = 0;
@@ -10,22 +12,18 @@ function loginValidate() {
 	var inputPassword = document.getElementById("password2");
 
 	if (inputEmail.value == "") {
-		inputEmail.classList.add("is-invalid");
-		document.getElementById("errorEmail").textContent = "El campo es obligatorio";
-		acumErrores++;
+		!obligatorio(inputEmail, "errorEmail");
+		acumErrores++
 	} else if (!validar_email(inputEmail.value)) {
-		inputEmail.classList.add("is-invalid");
-		document.getElementById("errorEmail").textContent = "El email no cumple el formato";
+		!formatoEmail(inputEmail, "errorEmail");
 		acumErrores++;
 	}
 
 	if (inputPassword.value == "") {
-		inputPassword.classList.add("is-invalid");
-		document.getElementById("errorPassword").textContent = "El campo es obligatorio";
+		!obligatorio(inputPassword, "errorPassword");
 		acumErrores++;
 	} else if (!validar_password(inputPassword.value)) {
-		inputPassword.classList.add("is-invalid");
-		document.getElementById("errorPassword").textContent = "La contraseña debe contener como mínimo una mayúscula, un número y 8 caracteres ";
+		!formatoPassword(inputPassword, "errorPassword");
 		acumErrores++;
 	}
 
@@ -47,38 +45,31 @@ function registerValidate() {
 	var inputProvince = document.getElementById("province");
 
 	if (inputUser.value == "") {
-		inputUser.classList.add("is-invalid");
-		document.getElementById("errorUser").textContent = "El campo es obligatorio";
+		!obligatorio(inputUser, "errorUser");
 		acumErrores++;
-	} else if (inputUser.value.length < 5) {
-		inputUser.classList.add("is-invalid");
-		document.getElementById("errorUser").textContent = "El usuario debe contener como mínimo 5 caracteres";
+	} else if (inputUser.value.length < userL) {
+		!largo(inputUser, "errorUser", userL);
 		acumErrores++;
 	}
 
 	if (inputEmail.value == "") {
-		inputEmail.classList.add("is-invalid");
-		document.getElementById("errorEmail2").textContent = "El campo es obligatorio";
+		!obligatorio(inputEmail, "errorEmail2");
 		acumErrores++;
 	} else if (!validar_email(inputEmail.value)) {
-		inputEmail.classList.add("is-invalid");
-		document.getElementById("errorEmail2").textContent = "El email no cumple el formato";
+		!formatoEmail(inputEmail, "errorEmail2");
 		acumErrores++;
 	}
 
 	if (inputPassword1.value == "") {
-		inputPassword1.classList.add("is-invalid");
-		document.getElementById("errorPassword1").textContent = "El campo es obligatorio";
+		!obligatorio(inputPassword1, "errorPassword1");
 		acumErrores++;
 	} else if (!validar_password(inputPassword1.value)) {
-		inputPassword1.classList.add("is-invalid");
-		document.getElementById("errorPassword1").textContent = "La contraseña debe tener como mínimo una mayúscula, un número y 8 caracteres ";
+		!formatoPassword(inputPassword1, "errorPassword1");
 		acumErrores++;
 	}
 
 	if (inputPassword2.value == "") {
-		inputPassword2.classList.add("is-invalid");
-		document.getElementById("errorPassword2").textContent = "El campo es obligatorio";
+		!obligatorio(inputPassword2, "errorPassword2");
 		acumErrores++;
 	} else if (inputPassword2.value !== inputPassword1.value) {
 		inputPassword2.classList.add("is-invalid");
@@ -87,8 +78,7 @@ function registerValidate() {
 	}
 
 	if (inputProvince.value == "") {
-		inputProvince.classList.add("is-invalid");
-		document.getElementById("errorProvince").textContent = "El campo es obligatorio";
+		!obligatorio(inputProvince, "errorProvince");
 		acumErrores++;
 	}
 
@@ -106,12 +96,10 @@ function searchValidate() {
 	var inputSearch = document.getElementById("searchId");
 
 	if (inputSearch.value == "") {
-		inputSearch.classList.add("is-invalid");
-		document.getElementById("errorSearch").textContent = "El campo es obligatorio";
+		!obligatorio(inputSearch, "errorSearch");
 		acumErrores++;
-	} else if (inputSearch.value.length < 3) {
-		inputSearch.classList.add("is-invalid");
-		document.getElementById("errorSearch").textContent = "La busqueda debe contener como mínimo 3 caracteres";
+	} else if (inputSearch.value.length < searchL) {
+		!largo(inputSearch, "errorSearch", searchL);
 		acumErrores++;
 	}
 
@@ -141,5 +129,25 @@ function eventL(formT) {
 		console.log(event);
 		if (event.target.value != '') event.target.classList.remove('is-invalid');
 	}, true);
+}
+
+function obligatorio(inputId, errorId) {
+	inputId.classList.add("is-invalid");
+	document.getElementById(errorId).textContent = "El campo es obligatorio";
+}
+
+function formatoEmail(inputId, errorId) {
+	inputId.classList.add("is-invalid");
+	document.getElementById(errorId).textContent = "El email no cumple el formato";
+}
+
+function formatoPassword(inputId, errorId) {
+	inputId.classList.add("is-invalid");
+	document.getElementById(errorId).textContent = "La contraseña debe contener como mínimo una mayúscula, un número y 8 caracteres ";
+}
+
+function largo(inputId, errorId, long) {
+	inputId.classList.add("is-invalid");
+	document.getElementById(errorId).textContent = "El campo debe contener como mínimo " + long + " caracteres";
 }
 
